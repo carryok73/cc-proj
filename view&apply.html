@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Companies Page</title>
+  <style>
+    /* Paste your CSS styles here */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 1em;
+    }
+    
+    header {
+      background-color: #007bff;
+      color: white;
+    }
+    
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    nav ul li {
+      margin-right: 1em;
+    }
+    
+    nav ul a {
+      color: white;
+      text-decoration: none;
+    }
+    
+    nav ul ul {
+      display: none;
+      position: absolute;
+      background-color: #007bff;
+    }
+    
+    nav ul li:hover > ul {
+      display: block;
+    }
+    
+    main {
+      padding: 2em 0;
+    }
+    
+    footer {
+      background-color: #007bff;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li>
+            <a href="#">Companies</a>
+            <ul>
+              <li><a href="#">Search</a></li>
+              <li><a href="#">Company A</a></li>
+              <li><a href="#">Company B</a></li>
+              <li><a href="#">Company C</a></li>
+              <!-- Add more companies as needed -->
+            </ul>
+          </li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Companies List</h1>
+      <p>Below are the results you want:</p>
+      <ul id="companyList">
+        <li>TCS</li>
+        <li>Mahindra</li>
+        <li>Capgemini</li>
+        <!-- Add more companies here -->
+      </ul>
+      <label for="searchInput">Search Companies:</label>
+      <input type="text" id="searchInput" oninput="searchCompanies()">
+      <button onclick="applyFilter()">Apply</button> <!-- Add Apply button -->
+    </main>
+    <footer>
+      <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    function searchCompanies() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const companyList = document.getElementById('companyList');
+      const companies = companyList.getElementsByTagName('li');
+      
+      for (let i = 0; i < companies.length; i++) {
+        const company = companies[i];
+        const companyName = company.textContent.toLowerCase();
+        if (companyName.includes(input)) {
+          company.style.display = 'block';
+        } else {
+          company.style.display = 'none';
+        }
+      }
+    }
+
+    function applyFilter() {
+      // You can add code here to handle the filter application
+      console.log("Apply button clicked");
+    }
+  </script>
+</body>
+</html>
